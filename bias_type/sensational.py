@@ -19,7 +19,6 @@ sensationalist_phrases = [
 	'Evacuation',
 	'Hostage',
 	'Explosion',
-	'Disaster',
 	'Organized crime',
 	'Gangs',
 	'National security',
