@@ -2,9 +2,20 @@
 
 A program to test for biased language and subjectivity, with focus on partisan vocabulary in news text snippets.
 
+## Dependencies
+
+Install nltk, spaCy, and vaderSentiment in order for svo-senti.py to work:
+```
+sudo pip install -U nltk
+sudo pip install -U spacy
+sudo python -m spacy download en
+sudo pip install vaderSentiment
+```
+
 ## Run
 
-`python detect_bias.py "[block of text]"` in terminal.
+`python detect_bias.py "[block of text]"` in terminal.  
+`python svo-senti.py "[block of text]"` in terminal.
 
 ## Examples
 
@@ -34,6 +45,21 @@ Mentioned: Obamacare, Affordable Care Act
 ```
 
 
+```
+$ python svo-senti.py "Trump defends son in Paris. The President's son has shown astonishingly poor judgement."
+
+Trump defends son in Paris.
+SVOs:  [(u'trump', u'defends', u'son')]
+Noun phrases:  Trump,  son,  Paris, 
+Polarity scores:  compound: 0.0  neg: 0.0  neu: 1.0  pos: 0.0 
+
+The President's son has shown astonishingly poor judgement.
+SVOs:  [(u'son', u'shown', u'judgement')]
+Noun phrases:  The President's son,  astonishingly poor judgement, 
+Polarity scores:  compound: -0.4767  neg: 0.307  neu: 0.693  pos: 0.0 
+```
+
 ## Credits
 
-Based on the JavaScript [joblint](https://github.com/rowanmanning/joblint) project and its Python modification [newslint](https://github.com/Xeus/newslint).
+detect_bias.py based on the JavaScript [joblint](https://github.com/rowanmanning/joblint) project and its Python modification [newslint](https://github.com/Xeus/newslint).  
+svo-senti.py using the help of [spaCy tutorials](https://nicschrading.com/project/Intro-to-NLP-with-spaCy/).
