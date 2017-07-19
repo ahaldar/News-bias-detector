@@ -32,7 +32,12 @@ Partisanship issues: 0
 Mentioned: disaster
 
 
-$ python detect_bias.py "If Republican efforts to repeal and replace Obamacare are successful, one of the biggest winners would be the wealthy. The Senate's bill -- released this week -- differs in key ways from the House-passed version. But proposals eliminate the taxes imposed on high-income Americans to help pay for an expansion of health benefits under the Affordable Care Act. The legislation also would let people contribute more to certain tax-advantaged accounts."
+$ python detect_bias.py "If Republican efforts to repeal and replace Obamacare 
+are successful, one of the biggest winners would be the wealthy. The Senate's 
+bill -- released this week -- differs in key ways from the House-passed version. 
+But proposals eliminate the taxes imposed on high-income Americans to help 
+pay for an expansion of health benefits under the Affordable Care Act. The 
+legislation also would let people contribute more to certain tax-advantaged accounts."
 
 NEWS BIAS DETECTOR
 
@@ -46,7 +51,8 @@ Mentioned: Obamacare, Affordable Care Act
 
 
 ```
-$ python svo-senti.py "Trump defends son in Paris. The President's son has shown astonishingly poor judgement."
+$ python svo-senti.py "Trump defends son in Paris. The President's son has 
+shown astonishingly poor judgement."
 
 Trump defends son in Paris.
 SVOs:  [(u'trump', u'defends', u'son')]
