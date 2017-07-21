@@ -20,8 +20,12 @@ def getSVOs(sentence):
 	parse = svo.parser(f)
 	#print f
 
-	print "SVOs: ",
-	print(svo.findSVOs(parse))
+	print "SVO: ",
+	#print(svo.findSVOs(parse))
+	res = svo.findSVOs(parse)
+	if not res:
+		res = svo.findSVs(parse)
+	print(res)
 	#for word in parse:
 	#	  print(word.text, word.pos_, word.dep_)
 	

@@ -73,7 +73,7 @@ def findSVs(tokens):
         subs, verbNegated = getAllSubs(v)
         if len(subs) > 0:
             for sub in subs:
-                svs.append((sub.orth_, "!" + v.orth_ if verbNegated else v.orth_))
+                svs.append((sub.orth_, "!" + v.orth_ if verbNegated else v.orth_, None))
     return svs
 
 def getObjsFromPrepositions(deps):
