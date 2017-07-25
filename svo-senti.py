@@ -1,14 +1,38 @@
+import os
 import sys
+import csv
 import svo
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk import tokenize
 
 sentences = []
-	
+
+def recursive_file_gen(mydir):
+    for root, dirs, files in os.walk(mydir):
+        for file in files:
+            #print (file[-3:])
+            if file[-3:] == "txt":
+                print (file)
+                yield os.path.join(root, file)
+
 def splitSentences():
 	paragraph = sys.argv[1]
 	lines_list = tokenize.sent_tokenize(paragraph)
 	sentences.extend(lines_list)
+
+def splitSentences2():
+	path = '/home/triya/Desktop/cnn/cnn_cleaned/'
+	l = list(recursive_file_gen(path))
+	for filename in l:
+		with open (filename) as f:
+			paragraph = f.read()
+			lines_list = tokenize.sent_tokenize(paragraph)
+			sentences.extend(lines_list)
+
+def writeCSV(f, svo_list, np, ss):
+	with open('data.csv', 'a') as csvfile:
+		spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+		spamwriter.writerow([f, svo_list, np, ss['compound'], ss['neg'], ss['neu'], ss['pos']])
 
 
 def getSVOs(sentence):
@@ -22,17 +46,21 @@ def getSVOs(sentence):
 
 	print "SVO: ",
 	#print(svo.findSVOs(parse))
-	res = svo.findSVOs(parse)
-	if not res:
-		res = svo.findSVs(parse)
-	print(res)
+	svo_list = svo.findSVOs(parse)
+	if not svo_list:
+		svo_list = svo.findSVs(parse)
+	print(svo_list)
 	#for word in parse:
 	#	  print(word.text, word.pos_, word.dep_)
 	
 	print "Noun phrases: ",	
+	npset = ''
 	for np in parse.noun_chunks:
-			print('{0}, '.format(np.text)),
+			print(np.text),
+			npset = npset + ',' + np.text
 	print
+	
+	return(f, svo_list, npset)
 
 def getSentiments(sentence):
 	#sentences = ["Trump defends son in Paris.",
@@ -55,13 +83,17 @@ def getSentiments(sentence):
 		print('{0}: {1} '.format(k, ss[k])),
 	print
 	
+	return ss
+	
 
 def main():
-	splitSentences()
+	#splitSentences()
+	splitSentences2()
 	for sentence in sentences:
 		print(sentence)
-		getSVOs(sentence)
-		getSentiments(sentence)
+		f, svo_list, np = getSVOs(sentence)
+		ss = getSentiments(sentence)
+		writeCSV(f, svo_list, np, ss)
 		print
 
 if __name__ == "__main__":
