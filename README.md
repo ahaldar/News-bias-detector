@@ -12,7 +12,7 @@ sudo python -m spacy download en
 sudo pip install vaderSentiment
 ```
 
-Install NumPy, TensorFlow, and Keras in order for classify.py to work:
+Install NumPy, TensorFlow, and Keras in order for classify.py to work:  
 First follow instructions from TensorFlow [installation guide](https://www.tensorflow.org/install/) to get TensorFlow on machine with CPU/GPU support as preferred.
 ```
 pip install numpy
