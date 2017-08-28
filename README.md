@@ -12,11 +12,22 @@ sudo python -m spacy download en
 sudo pip install vaderSentiment
 ```
 
+Install NumPy, TensorFlow, and Keras in order for classify.py to work:
+First follow instructions from TensorFlow [installation guide](https://www.tensorflow.org/install/) to get TensorFlow on machine with CPU/GPU support as preferred.
+```
+pip install numpy
+pip install keras
+```
+
 ## Run
 
-`python detect_bias.py "[block of text]"` in terminal.  
-`python svo-senti.py "[block of text]"` in terminal.  
-`python classify.py"` in terminal with data.csv containing sentences to classify, one per row, populated using svo-senti.py code for preprocessing of text.
+In terminal command line, use as follows:
+```
+python detect_bias.py "[block of text]"
+python svo-senti.py "[block of text]"
+python classify.py"
+```
+svo-senti.py preprocesses and populates a data.csv file containing sentences to classify, one per row, which can then be used by classify.py.
 
 ## Examples
 
@@ -92,4 +103,4 @@ Epoch 10/10
 
 detect_bias.py based on the JavaScript [joblint](https://github.com/rowanmanning/joblint) project and its Python modification [newslint](https://github.com/Xeus/newslint).  
 svo-senti.py using the help of [spaCy tutorials](https://nicschrading.com/project/Intro-to-NLP-with-spaCy/).  
-classify.py using help of [Keras blog](https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html)
+classify.py using help of [Keras blog](https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html).
